@@ -187,10 +187,10 @@ if ($_SESSION['RollNo']) {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Home</li>
+                              <li class="breadcrumb-item active" aria-current="page">Sample</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Home</h1> 
+                        <h1 class="mb-0 fw-bold">Sample</h1> 
                     </div>
                     
                 </div>
@@ -205,129 +205,29 @@ if ($_SESSION['RollNo']) {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-               <!-- Row -->
-               <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="row">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="../assets/images/users/5.jpg"
-                                        class="rounded-circle" width="150" />
+                            <div class="table-responsive m-t-20">
 
-                                        <?php
-                                        $rollno = $_SESSION['RollNo'];
-                                        $sql="select * from LMS.user where RollNo='$rollno'";
-                                        $result=$conn->query($sql);
-                                        $row=$result->fetch_assoc();
-
-                                        $name=$row['Name'];
-                                        $category=$row['Category'];
-                                        $email=$row['EmailId'];
-                                        $mobno=$row['MobNo'];
-                                        ?> 
-
-                                    <h4 class="card-title m-t-10"><?php echo $name ?></h4>
-                                    <h6 class="card-subtitle">
-                                    <p><b>Email ID: </b><?php echo $email ?></p>
-                                    <br>
-                                    <br><p><b>Mobile number: </b><?php echo $mobno ?></p>
-                                    <br><p><b>Roll No: </b><?php echo $rollno ?></p>
-                                    <br><p><b>Education: </b><?php echo $category ?></p>
-                                    </br>
-                                    </h6>
-                                    <div class="row text-center justify-content-md-center">
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
-                                                    class="icon-people"></i>
-                                                <font class="font-medium"></font>
-                                            </a></div>
-                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
-                                                    class="icon-picture"></i>
-                                                <font class="font-medium"></font>
-                                            </a></div>
-                                    </div>
-                                </center>
-                            </div>
-                            <div>
-                                <hr>
-                            </div>
+                            <!-- CONTENT HERE -->
                             
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
-                        <div class="card">
-                            <div class="card-body">
+                       
 
-                                <?php
-                                $rollno = $_SESSION['RollNo'];
-                                $sql="select * from LMS.user where RollNo='$rollno'";
-                                $result=$conn->query($sql);
-                                $row=$result->fetch_assoc();
-
-                                $name=$row['Name'];
-                                $category=$row['Category'];
-                                $email=$row['EmailId'];
-                                $mobno=$row['MobNo'];
-                                $pswd=$row['Password'];
-                                ?>   
-
-                                <form class="form-horizontal form-material mx-2" action="index.php?id=<?php echo $rollno ?>" method="post">
-                                    <div class="form-group">
-                                        <label class="col-md-12">Full Name</label>
-                                        <div class="col-md-12">
-                                            <input type="text" name="Name" value="<?php echo $name?>" placeholder="<?php echo $name?>"
-                                                class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="example-email" class="col-md-12">Email</label>
-                                        <div class="col-md-12">
-                                            <input type="email" name="EmailId" value="<?php echo $email?>" placeholder="<?php echo $email?>"
-                                                class="form-control form-control-line" name="example-email"
-                                                id="example-email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                            <label class="col-sm-12" for="Category"><b>Category:</b></label>
-                                            <div class="col-sm-12">
-                                                <select name = "Category" tabindex="1" value="UG" data-placeholder="Select Category" class="form-select shadow-none form-control-line">
-                                                    <option value="<?php echo $category?>"><?php echo $category ?> </option>
-                                                    <option value="School">School</option>
-                                                    <option value="Diploma">Diploma</option>
-                                                    <option value="UG">UG</option>
-                                                    <option value="PG">PG</option>
-                                                </select>
-                                            </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Password</label>
-                                        <div class="col-md-12">
-                                            <input type="password" name="Password" value="<?php echo $pswd?>"
-                                                class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12">Phone No</label>
-                                        <div class="col-md-12">
-                                            <input type="text" name="MobNo" value="<?php echo $mobno?>" placeholder="<?php echo $mobno?>"
-                                                class="form-control form-control-line">
-                                        </div>
-                                    </div>
-                                   
-                                    
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                            <button type="submit" name="submit" class="btn btn-success text-white">Update Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <!-- CONTENT END HERE -->
+                            </div> 
+                                
+                                
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
+                   
+                    
+                   
+                    
+                    
                 </div>
-                <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -378,31 +278,6 @@ if ($_SESSION['RollNo']) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.js"></script>
-
-    <?php
-if(isset($_POST['submit']))
-{
-    $rollno = $_GET['id'];
-    $name=$_POST['Name'];
-    $category=$_POST['Category'];
-    $email=$_POST['EmailId'];
-    $mobno=$_POST['MobNo'];
-    $pswd=$_POST['Password'];
-
-$sql1="update LMS.user set Name='$name', Category='$category', EmailId='$email', MobNo='$mobno', Password='$pswd' where RollNo='$rollno'";
-
-
-
-if($conn->query($sql1) === TRUE){
-echo "<script type='text/javascript'>alert('Success')</script>";
-header( "Refresh:0.01; url=index.php", true, 303);
-}
-else
-{//echo $conn->error;
-echo "<script type='text/javascript'>alert('Error')</script>";
-}
-}
-?>
 </body>
 
 </html>
