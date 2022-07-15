@@ -200,10 +200,10 @@ require('dbconn.php');
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                              <li class="breadcrumb-item active" aria-current="page">Category</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Dashboard</h1> 
+                        <h1 class="mb-0 fw-bold">Category</h1> 
                     </div>
                    
                     </div>

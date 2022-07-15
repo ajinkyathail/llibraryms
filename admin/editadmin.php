@@ -1,6 +1,11 @@
 <?php
 require('dbconn.php');
 ?>
+
+<?php 
+if ($_SESSION['RollNo']) {
+    ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -203,9 +208,60 @@ require('dbconn.php');
                               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Dashboard</h1> 
+                        <h1 class="mb-0 fw-bold">Update Details</h1> 
                     </div>
-                   
+
+                    <div class="module-body">
+                    <?php
+                                $rollno = $_SESSION['RollNo'];
+                                $sql="select * from LMS.user where RollNo='$rollno'";
+                                $result=$conn->query($sql);
+                                $row=$result->fetch_assoc();
+
+                                $name=$row['Name'];
+                                $email=$row['EmailId'];
+                                $mobno=$row['MobNo'];
+                                $pswd=$row['Password'];
+                                ?>    
+                                
+                                <form class="form-horizontal row-fluid" action="edit_admin_details.php?id=<?php echo $rollno ?>" method="post">
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="Name"><b>Name:</b></label>
+                                        <div class="controls">
+                                            <input type="text" id="Name" name="Name" value= "<?php echo $name?>" class="span8" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="EmailId"><b>Email Id:</b></label>
+                                        <div class="controls">
+                                            <input type="text" id="EmailId" name="EmailId" value= "<?php echo $email?>" class="span8" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="MobNo"><b>Mobile Number:</b></label>
+                                        <div class="controls">
+                                            <input type="text" id="MobNo" name="MobNo" value= "<?php echo $mobno?>" class="span8" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="Password"><b>New Password:</b></label>
+                                        <div class="controls">
+                                            <input type="password" id="Password" name="Password"  value= "<?php echo $pswd?>" class="span8" required>
+                                        </div>
+                                    </div>   
+
+                                    <div class="control-group">
+                                            <div class="controls">
+                                                <button type="submit" name="submit"class="btn-primary"><center>Update Details</center></button>
+                                            </div>
+                                        </div>                                                                     
+
+                                </form>
+                            </div>                 
                     </div>
                 </div>
             </div>
@@ -218,100 +274,9 @@ require('dbconn.php');
             <div class="container-fluid">
                 <!-- ============================================================== 
                 <!-- Sales chart -->
-                <!-- ============================================================== 
+                <!-- <!-- ==============================================================  -->
                 <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-md-flex align-items-center">
-                                    <div>
-                                        <h4 class="card-title">Sales Summary</h4>
-                                        <h6 class="card-subtitle">Ample admin Vs Pixel admin</h6>
-                                    </div>
-                                    <div class="ms-auto d-flex no-block align-items-center">
-                                        <ul class="list-inline dl d-flex align-items-center m-r-15 m-b-0">
-                                            <li class="list-inline-item d-flex align-items-center text-info"><i class="fa fa-circle font-10 me-1"></i> Ample
-                                            </li>
-                                            <li class="list-inline-item d-flex align-items-center text-primary"><i class="fa fa-circle font-10 me-1"></i> Pixel
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="amp-pxl mt-4" style="height: 350px;">
-                                    <div class="chartist-tooltip"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Weekly Stats</h4>
-                                <h6 class="card-subtitle">Average sales</h6>
-                                <div class="mt-5 pb-3 d-flex align-items-center">
-                                    <span class="btn btn-primary btn-circle d-flex align-items-center">
-                                        <i class="mdi mdi-cart-outline fs-4" ></i>
-                                    </span>
-                                    <div class="ms-3">
-                                        <h5 class="mb-0 fw-bold">Top Sales</h5>
-                                        <span class="text-muted fs-6">Johnathan Doe</span>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <span class="badge bg-light text-muted">+68%</span>
-                                    </div>
-                                </div>
-                                <div class="py-3 d-flex align-items-center">
-                                    <span class="btn btn-warning btn-circle d-flex align-items-center">
-                                        <i class="mdi mdi-star-circle fs-4" ></i>
-                                    </span>
-                                    <div class="ms-3">
-                                        <h5 class="mb-0 fw-bold">Best Seller</h5>
-                                        <span class="text-muted fs-6">MaterialPro Admin</span>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <span class="badge bg-light text-muted">+68%</span>
-                                    </div>
-                                </div>
-                                <div class="py-3 d-flex align-items-center">
-                                    <span class="btn btn-success btn-circle d-flex align-items-center">
-                                        <i class="mdi mdi-comment-multiple-outline text-white fs-4" ></i>
-                                    </span>
-                                    <div class="ms-3">
-                                        <h5 class="mb-0 fw-bold">Most Commented</h5>
-                                        <span class="text-muted fs-6">Ample Admin</span>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <span class="badge bg-light text-muted">+68%</span>
-                                    </div>
-                                </div>
-                                <div class="py-3 d-flex align-items-center">
-                                    <span class="btn btn-info btn-circle d-flex align-items-center">
-                                        <i class="mdi mdi-diamond fs-4 text-white" ></i>
-                                    </span>
-                                    <div class="ms-3">
-                                        <h5 class="mb-0 fw-bold">Top Budgets</h5>
-                                        <span class="text-muted fs-6">Sunil Joshi</span>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <span class="badge bg-light text-muted">+15%</span>
-                                    </div>
-                                </div>
-
-                                <div class="pt-3 d-flex align-items-center">
-                                    <span class="btn btn-danger btn-circle d-flex align-items-center">
-                                        <i class="mdi mdi-content-duplicate fs-4 text-white" ></i>
-                                    </span>
-                                    <div class="ms-3">
-                                        <h5 class="mb-0 fw-bold">Best Designer</h5>
-                                        <span class="text-muted fs-6">Nirav Joshi</span>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <span class="badge bg-light text-muted">+90%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
@@ -626,6 +591,34 @@ require('dbconn.php');
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.js"></script>
+    <?php
+if(isset($_POST['submit']))
+{
+    $rollno = $_GET['id'];
+    $name=$_POST['Name'];
+    $email=$_POST['EmailId'];
+    $mobno=$_POST['MobNo'];
+    $pswd=$_POST['Password'];
+
+$sql1="update LMS.user set Name='$name', EmailId='$email', MobNo='$mobno', Password='$pswd' where RollNo='$rollno'";
+
+
+
+if($conn->query($sql1) === TRUE){
+echo "<script type='text/javascript'>alert('Success')</script>";
+header( "Refresh:0.01; url=index.php", true, 303);
+}
+else
+{//echo $conn->error;
+echo "<script type='text/javascript'>alert('Error')</script>";
+}
+}
+?>
 </body>
 
 </html>
+
+<?php }
+else {
+    echo "<script type='text/javascript'>alert('Access Denied!!!')</script>";
+} ?>

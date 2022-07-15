@@ -204,10 +204,10 @@ if ($_SESSION['RollNo']) {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Manage Students</li>
+                              <li class="breadcrumb-item active" aria-current="page">Sample</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Manage Students</h1> 
+                        <h1 class="mb-0 fw-bold">Sample</h1> 
                     </div>
                     
                 </div>
@@ -229,60 +229,8 @@ if ($_SESSION['RollNo']) {
                             <div class="table-responsive m-t-20">
 
                             <!-- CONTENT HERE -->
-                                
-                                <?php
-                                    if(isset($_POST['submit']))
-                                        {$s=$_POST['title'];
-                                            $sql="select * from LMS.user where (RollNo='$s' or Name like '%$s%') and RollNo<>'ADMIN'";
-                                        }
-                                    else
-                                        $sql="select * from LMS.user where RollNo<>'ADMIN'";
-
-                                    $result=$conn->query($sql);
-                                    $rowcount=mysqli_num_rows($result);
-
-                                    if(!($rowcount))
-                                        echo "<br><center><h2><b><i>No Results</i></b></h2></center>";
-                                    else
-                                    {
-
-                                    
-                                    ?>
-                        <table class="table table-bordered table-responsive-lg" id = "tables">
-                                  <thead>
-                                    <tr>
-                                      <th>Name</th>
-                                      <th>Roll No.</th>
-                                      <th>Email id</th>                                      
-                                      <th>Action</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                    <?php
                             
-                            //$result=$conn->query($sql);
-                            while($row=$result->fetch_assoc())
-                            {
-
-                                $email=$row['EmailId'];
-                                $name=$row['Name'];
-                                $rollno=$row['RollNo'];
-                            ?>
-                                    <tr>
-                                      <td><?php echo $name ?></td>
-                                      <td><?php echo $rollno ?></td>
-                                      <td><?php echo $email ?></td>                                      
-                                        <td>
-                                        <center>
-                                            <a href="studentdetails.php?id=<?php echo $rollno; ?>" class="btn btn-success">Details</a>
-                                            <!--a href="remove_student.php?id=<?php echo $rollno; ?>" class="btn btn-danger">Remove</a-->
-                                      </center>
-                                        </td>
-                                    </tr>
-                            <?php }} ?>
-                                  </tbody>
-                                </table>
-
+                       
 
                                 <!-- CONTENT END HERE -->
                             </div> 
