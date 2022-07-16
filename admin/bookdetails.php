@@ -77,10 +77,10 @@ if ($_SESSION['RollNo']) {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Notifications</li>
+                              <li class="breadcrumb-item active" aria-current="page">Book Details</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Notifications</h1> 
+                        <h1 class="mb-0 fw-bold">Book Details</h1> 
                     </div>
                     
                 </div>
@@ -103,36 +103,48 @@ if ($_SESSION['RollNo']) {
 
                             <!-- CONTENT HERE -->
                             <div class="span9">
-                        <table class="table" id = "tables">
-                                  <thead>
-                                    <tr>
-                                      <th>Notifications</th>
-                                      <th>Date</th>
-                                      <th>Time</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <?php
-                                    $rollno=$_SESSION['RollNo'];
-                            $sql="select * from LMS.message where RollNo='$rollno' order by Date DESC,Time DESC";
+                        <div class="content">
+
+                        <div class="module">
+                        
+                            <div class="module-body">
+                        <?php
+                            $x=$_GET['id'];
+                            $sql="select * from LMS.book where BookId='$x'";
                             $result=$conn->query($sql);
-                            while($row=$result->fetch_assoc())
-                            {
-                                $msg=$row['Msg'];
-                                $date=$row['Date'];
-                                $time=$row['Time'];
+                            $row=$result->fetch_assoc();    
                             
+                                $bookid=$row['BookId'];
+                                $name=$row['Title'];
+                                $publisher=$row['Publisher'];
+                                $year=$row['Year'];
+                                $avail=$row['Availability'];
+
+                                echo "<b>Book ID:</b> ".$bookid."<br><br>";
+                                echo "<b>Title:</b> ".$name."<br><br>";
+                                $sql1="select * from LMS.author where BookId='$bookid'";
+                                $result=$conn->query($sql1);
+                                
+                                echo "<b>Author:</b> ";
+                                while($row1=$result->fetch_assoc())
+                                {
+                                    echo $row1['Author']."&nbsp;";
+                                }
+                                echo "<br><br>";
+                                echo "<b>Publisher:</b> ".$publisher."<br><br>";
+                                echo "<b>Year:</b> ".$year."<br><br>";
+                                echo "<b>Availability:</b> ".$avail."<br><br>";
+
+                                
+                        
                            
                             ?>
-                                    <tr>
-                                      <td><?php echo $msg ?></td>
-                                      <td><?php echo $date ?></td>
-                                      <td><?php echo $time ?></td>
-                                    </tr>
-                               <?php } ?>
-                               </tbody>
-                                </table>
+                            
+                        <a href="book.php" class="btn btn-primary">Go Back</a>                             
+                               </div>
+                           </div>
                             </div>
+                       
 
                                 <!-- CONTENT END HERE -->
                             </div> 
