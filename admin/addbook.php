@@ -106,64 +106,84 @@ if ($_SESSION['RollNo']) {
                             <!-- CONTENT HERE -->
                             <div class="content">
 
-                        <div class="module">
-                            <div class="module-head">
-                                
-                            </div>
-                            <div class="module-body">
+<div class="module">
+    <div class="module-head">
+        
+    </div>
+    <div class="module-body">
 
-                                    
-                                    <br >
+            
+            <br >
 
-                                    <form class="form-horizontal row-fluid" action="addbook.php" method="post">
-                                        <div class="form-groupp">
-                                            <label class="col-md-12" for="Title"><b>Book Title</b></label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="title" name="title" placeholder="Title"  class="form-control form-control-line" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-groupp">
-                                            <label class="col-md-12" for="Author"><b>Author</b></label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="author1" name="author1"  class="form-control form-control-line" required>
-                                                <input type="text" id="author2" name="author2"  class="form-control form-control-line" >
-                                                <input type="text" id="author3" name="author3"  class="form-control form-control-line" >
-
-                                            </div>
-                                        </div>
-                                        <div class="form-groupp">
-                                            <label class="col-md-12" for="Publisher"><b>Publisher</b></label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="publisher" name="publisher" placeholder="Publisher" class="form-control form-control-line" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12" for="Year"><b>Year</b></label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="year" name="year" placeholder="Year" class="form-control form-control-line" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-12" for="Availability"><b>Number of Copies</b></label>
-                                            <div class="col-md-12">
-                                                <input type="text" id="availability" name="availability" placeholder="Number of Copies" class="span8" required>
-                                            </div>
-                                        </div>
-                                        
-                                    <div class="form-group">
-                                        <div class="col-sm-12">
-                                                <button type="submit" name="submit" class="btn btn-success text-white">Add Book</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                            </div>
-                        </div>
-
-                        
-                        
+            <form class="form-horizontal row-fluid" action="addbook.php" method="post">
+                <div class="form-groupp">
+                    <label class="col-md-12" for="Title"><b>Book Title</b></label>
+                    <div class="col-md-12">
+                        <input type="text" id="title" name="title" placeholder="Title"  class="form-control form-control-line" required>
                     </div>
-                        
-                        
+                </div>
+                <div class="form-groupp">
+                    <label class="col-md-12" for="Author"><b>Author</b></label>
+                    <div class="col-md-12">
+                        <input type="text" id="author1" name="author1"  class="form-control form-control-line" required>
+                        <input type="text" id="author2" name="author2"  class="form-control form-control-line" >
+                        <input type="text" id="author3" name="author3"  class="form-control form-control-line" >
+
+                    </div>
+                </div>
+                <div class="form-groupp">
+                    <label class="col-md-12" for="Publisher"><b>Publisher</b></label>
+                    <div class="col-md-12">
+                        <input type="text" id="publisher" name="publisher" placeholder="Publisher" class="form-control form-control-line" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-12" for="Year"><b>Year</b></label>
+                    <div class="col-md-12">
+                        <input type="text" id="year" name="year" placeholder="Year" class="form-control form-control-line" required>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                     <label for="control-label">Category</label>
+                            <select name="catid" class="form-control">
+                                                <option disabled selected> Select Category</option>
+                                                <?php
+                                                
+                                                    $sql = "SELECT * FROM lms.tblcategory";
+
+                                                    $result = mysqli_query($conn, $sql) or die("Query Failed.");
+
+                                                    if(mysqli_num_rows($result) > 0){
+                                                    while($row = mysqli_fetch_assoc($result)){
+                                                        echo "<option value='{$row['id']}'>{$row['CategoryName']}</option>";
+                                                    }
+                                                    }
+                                                ?>
+                                            </select>                
+                                        </div>           
+                                        
+                                        <div class="form-group">
+                    <label class="col-md-12" for="Availability"><b>Number of Copies</b></label>
+                    <div class="col-md-12">
+                        <input type="text" id="availability" name="availability" placeholder="Number of Copies" class="span8" required>
+                    </div>
+                </div>
+
+                
+            <div class="form-group">
+                <div class="col-sm-12">
+                        <button type="submit" name="submit" class="btn btn-success text-white">Add Book</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+
+
+
+</div>
+
 
                                 <!-- CONTENT END HERE -->
                             </div> 
@@ -226,6 +246,7 @@ if ($_SESSION['RollNo']) {
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.js"></script>
 
+ 
     <?php
 if(isset($_POST['submit']))
 {
@@ -236,8 +257,10 @@ if(isset($_POST['submit']))
     $publisher=$_POST['publisher'];
     $year=$_POST['year'];
     $availability=$_POST['availability'];
+    $catid=$_POST['catid'];
 
-$sql1="insert into LMS.book (Title,Publisher,Year,Availability) values ('$title','$publisher','$year','$availability')";
+
+$sql1="insert into LMS.book (Title,Publisher,Year,Availability,CatId ) values ('$title','$publisher','$year','$availability',$catid)";
 
 if($conn->query($sql1) === TRUE){
 $sql2="select max(BookId) as x from LMS.book";
@@ -262,10 +285,12 @@ echo "<script type='text/javascript'>alert('Error')</script>";
     
 }
 ?>
-   
-</body>
+      
+    </body>
 
 </html>
+
+
 <?php }
 else {
     echo "<script type='text/javascript'>alert('Access Denied!!!')</script>";

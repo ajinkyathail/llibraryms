@@ -150,6 +150,10 @@ if ($_SESSION['RollNo']) {
                                         <td><center>
                                             <a href="bookdetails.php?id=<?php echo $bookid; ?>" class="btn btn-primary">Details</a>
                                             <a href="editbook.php?id=<?php echo $bookid; ?>" class="btn btn-success">Edit</a>
+                                            <a href="deletebook.php?id=<?php echo $bookid; ?>" class="btn btn-danger">Delete</a>
+
+                                          
+
                                         </center></td>
                                     </tr>
                                <?php }} ?>

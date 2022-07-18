@@ -77,10 +77,10 @@ if ($_SESSION['RollNo']) {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Manage Students</li>
+                              <li class="breadcrumb-item active" aria-current="page">Update Book</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Manage Students</h1> 
+                        <h1 class="mb-0 fw-bold">Update Book</h1> 
                     </div>
                     
                 </div>
@@ -102,61 +102,47 @@ if ($_SESSION['RollNo']) {
                             <div class="table-responsive m-t-20">
 
                             <!-- CONTENT HERE -->
-                                
-                                <?php
-                                    if(isset($_POST['submit']))
-                                        {$s=$_POST['title'];
-                                            $sql="select * from LMS.user where (RollNo='$s' or Name like '%$s%') and RollNo<>'ADMIN'";
-                                        }
-                                    else
-                                        $sql="select * from LMS.user where RollNo<>'ADMIN'";
-
-                                    $result=$conn->query($sql);
-                                    $rowcount=mysqli_num_rows($result);
-
-                                    if(!($rowcount))
-                                        echo "<br><center><h2><b><i>No Results</i></b></h2></center>";
-                                    else
-                                    {
-
-                                    
-                                    ?>
-                        <table class="table table-bordered table-responsive-lg" id = "tables">
-                                  <thead>
-                                    <tr>
-                                      <th>Name</th>
-                                      <th>Roll No.</th>
-                                      <th>Email id</th>                                      
-                                      <th>Action</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                    <?php
+                            <div class="span9">
+                        <div class="module">
                             
-                            //$result=$conn->query($sql);
-                            while($row=$result->fetch_assoc())
-                            {
+                            <div class="module-body">
 
-                                $email=$row['EmailId'];
-                                $name=$row['Name'];
-                                $rollno=$row['RollNo'];
-                            ?>
-                                    <tr>
-                                      <td><?php echo $name ?></td>
-                                      <td><?php echo $rollno ?></td>
-                                      <td><?php echo $email ?></td>                                      
-                                        <td>
-                                        <center>
-                                            <a href="studentdetails.php?id=<?php echo $rollno; ?>" class="btn btn-success">Details</a>
-                                            <!-- <a href="editstudent.php?id=<?php //echo $rollno; ?>" class="btn btn-success">Edit</a> -->
-                                            <!-- <a href="deletestudent.php?id=<?php //echo $rollno; ?>" class="btn btn-danger">Remove</a> -->
-                                      </center>
-                                        </td>
-                                    </tr>
-                            <?php }} ?>
-                                  </tbody>
-                                </table>
+                                <?php
+                                    $id = $_GET['id'];
+                                    $sql = "select * from LMS.tblcategory where id='$id'";
+                                    $result=$conn->query($sql);
+                                    $row=$result->fetch_assoc();
+                                    $categoryname=$row['CategoryName'];
+                    
+                                ?>
 
+                                    <br >
+                                    <form class="form-horizontal row-fluid" action="editcategory.php?id=<?php echo $id ?>" method="post">
+                                        <div class="form-group">
+                                            <b>
+                                            <label class="control-label" for="Title">Catgegory :</label></b>
+                                            <div class="col-md-12">
+                                                <input type="text" id="CategoryName" name="categoryname" value= "<?php echo $categoryname?>" class="form-control form-control-line" required>
+                                            </div>
+                                        </div>
+
+                                        
+                                       
+
+                                        
+                                            <br>
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <button type="submit" name="submit"class="btn btn-success text-blue">Update Details</button>
+                                            </div>
+                                        </div>
+
+                                    </form> 
+                                    </div>   
+                                    </div>          
+                    </div>
+                    
+                       
 
                                 <!-- CONTENT END HERE -->
                             </div> 
@@ -218,6 +204,28 @@ if ($_SESSION['RollNo']) {
     <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../dist/js/pages/dashboards/dashboard1.js"></script>
+
+    <?php
+    if(isset($_POST['submit']))
+    {
+        $id = $_GET['Id'];
+        $categoryname=$_POST['CategoryName'];
+       
+
+    $sql1="UPDATE 'LMS.tblcategory' SET 'Id'='$id','CategoryName'='$categoryname' where Id='$id'";
+
+
+
+    if($conn->query($sql1) === TRUE){
+    echo "<script type='text/javascript'>alert('Success')</script>";
+    header( "Refresh:0.01; url=editcategory.php", true, 303);
+    }
+    else
+    {//echo $conn->error;
+    echo "<script type='text/javascript'>alert('Error')</script>";
+    }
+    }
+    ?>
 </body>
 
 </html>
