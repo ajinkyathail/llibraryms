@@ -104,8 +104,145 @@ if ($_SESSION['RollNo']) {
                             <div class="card-body">
                             <div class="table-responsive m-t-20">
 
+
                             <!-- CONTENT HERE -->
-                            
+                            <div class="d-md-flex">
+                                    <div>
+                                        <h4 class="card-title">ADMIN Dashboard</h4>
+                                        
+                                    </div>
+                                    <div class="ms-auto">
+                                        <div class="dl">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- title -->
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-hover align-middle text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">Products</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="m-r-10"><a
+                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
+                                                            $qry = mysqli_query($conn,"select * from LMS.user");
+                                                            echo mysqli_num_rows($qry);	
+                                                            ?></a>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 class="m-b-0 font-16">Student</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="m-r-10"><a
+                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
+                                                            $qry = mysqli_query($conn,"select * from LMS.record,LMS.book where Date_of_Issue is NULL and record.BookId=book.BookId order by Time");
+                                                            echo mysqli_num_rows($qry);	
+                                                            ?></a>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 class="m-b-0 font-16">Issue Requests</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                
+                                            </tr> 
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="m-r-10"><a
+                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
+                                                            $qry = mysqli_query($conn,"select * from LMS.book");
+                                                            echo mysqli_num_rows($qry);	
+                                                            ?></a>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 class="m-b-0 font-16">Books</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="m-r-10"><a
+                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
+                                                            $qry = mysqli_query($conn,"select * from LMS.renew");
+                                                            echo mysqli_num_rows($qry);	
+                                                            ?></a>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 class="m-b-0 font-16">Renew Requests</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr> 
+                                            <tr>
+                                                
+                                                
+                                            </tr>
+                                            <tr>
+                                                
+                                                
+                                            </tr> 
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="m-r-10"><a
+                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
+                                                            $qry = mysqli_query($conn,"select * from LMS.tblcategory");
+                                                            echo mysqli_num_rows($qry);	
+                                                            ?></a>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 class="m-b-0 font-16">Category</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="m-r-10"><a
+                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
+                                                            $qry = mysqli_query($conn,"select * from LMS.return");
+                                                            echo mysqli_num_rows($qry);	
+                                                            ?></a>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 class="m-b-0 font-16">Return Requests</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                
+                                            </tr>
+<tr>
+                                                
+                                                
+                                            </tr>
+
+
+
+
+
+
+                                            
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                                
                                 <!-- CONTENT END HERE -->
                             </div> 

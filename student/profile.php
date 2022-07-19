@@ -100,104 +100,121 @@ if ($_SESSION['RollNo']) {
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
-                        <div class="d-md-flex">
-                                    <div>
-                                        <h4 class="card-title">Student Dashboard</h4>
-                                        
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="../assets/images/users/5.jpg"
+                                        class="rounded-circle" width="150" />
+
+                                        <?php
+                                        $rollno = $_SESSION['RollNo'];
+                                        $sql="select * from LMS.user where RollNo='$rollno'";
+                                        $result=$conn->query($sql);
+                                        $row=$result->fetch_assoc();
+
+                                        $name=$row['Name'];
+                                        $category=$row['Category'];
+                                        $email=$row['EmailId'];
+                                        $mobno=$row['MobNo'];
+                                        ?> 
+
+                                    <h4 class="card-title m-t-10"><?php echo $name ?></h4>
+                                    <h6 class="card-subtitle">
+                                    <p><b>Email ID: </b><?php echo $email ?></p>
+                                    <br>
+                                    <br><p><b>Mobile number: </b><?php echo $mobno ?></p>
+                                    <br><p><b>Roll No: </b><?php echo $rollno ?></p>
+                                    <br><p><b>Education: </b><?php echo $category ?></p>
+                                    </br>
+                                    </h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
+                                                    class="icon-people"></i>
+                                                <font class="font-medium"></font>
+                                            </a></div>
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
+                                                    class="icon-picture"></i>
+                                                <font class="font-medium"></font>
+                                            </a></div>
                                     </div>
-                                    <div class="ms-auto">
-                                        <div class="dl">
-                                            
+                                </center>
+                            </div>
+                            <div>
+                                <hr>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <?php
+                                $rollno = $_SESSION['RollNo'];
+                                $sql="select * from LMS.user where RollNo='$rollno'";
+                                $result=$conn->query($sql);
+                                $row=$result->fetch_assoc();
+
+                                $name=$row['Name'];
+                                $category=$row['Category'];
+                                $email=$row['EmailId'];
+                                $mobno=$row['MobNo'];
+                                $pswd=$row['Password'];
+                                ?>   
+
+                                <form class="form-horizontal form-material mx-2" action="profile.php?id=<?php echo $rollno ?>" method="post">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" name="Name" value="<?php echo $name?>" placeholder="<?php echo $name?>"
+                                                class="form-control form-control-line">
                                         </div>
                                     </div>
-                                </div>
-                                <!-- title -->
-                                <div class="table-responsive">
-                                    <table class="table mb-0 table-hover align-middle text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0"></th>
-                                               
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            
-                                            <tr>
-                                                <td>
-                                                    
-                                                </td>
-
-                                              
-                                                
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="m-r-10"><a
-                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
-                                                            $qry = mysqli_query($conn,"select * from LMS.book");
-                                                            echo mysqli_num_rows($qry);	
-                                                            ?></a>
-                                                        </div>
-                                                        <div class="">
-                                                            <h4 class="m-b-0 font-16">Books</h4>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                
-                                                
-                                            </tr> 
-                                            <tr>
-                                                
-                                                
-                                            </tr>
-                                            <tr>
-                                                
-                                                
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="m-r-10"><a
-                                                                class="btn btn-circle d-flex btn-orange text-white"><?php   
-                                                            $qry = mysqli_query($conn,"select * from LMS.tblcategory");
-                                                            echo mysqli_num_rows($qry);	
-                                                            ?></a>
-                                                        </div>
-                                                        <div class="">
-                                                            <h4 class="m-b-0 font-16">Category</h4>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                
-                                                
-                                            </tr>
-<tr>
-                                                
-                                                
-                                            </tr>
-
-
-
-
-
-
-                                            
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" name="EmailId" value="<?php echo $email?>" placeholder="<?php echo $email?>"
+                                                class="form-control form-control-line" name="example-email"
+                                                id="example-email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-sm-12" for="Category"><b>Education:</b></label>
+                                            <div class="col-sm-12">
+                                                <select name = "Category" tabindex="1" value="UG" data-placeholder="Select Category" class="form-select shadow-none form-control-line">
+                                                    <option value="<?php echo $category?>"><?php echo $category ?> </option>
+                                                    <option value="School">School</option>
+                                                    <option value="Diploma">Diploma</option>
+                                                    <option value="UG">UG</option>
+                                                    <option value="PG">PG</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password" name="Password" value="<?php echo $pswd?>"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text" name="MobNo" value="<?php echo $mobno?>" placeholder="<?php echo $mobno?>"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                   
+                                    
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="submit" name="submit" class="btn btn-success text-white">Update Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>  
-                            
-                            
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    
                     <!-- Column -->
                 </div>
                 <!-- Row -->
@@ -265,7 +282,7 @@ if ($_SESSION['RollNo']) {
 
     if($conn->query($sql1) === TRUE){
     echo "<script type='text/javascript'>alert('Success')</script>";
-    header( "Refresh:0.01; url=index.php", true, 303);
+    header( "Refresh:0.01; url=profile.php", true, 303);
     }
     else
     {//echo $conn->error;

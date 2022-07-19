@@ -140,8 +140,10 @@ if ($_SESSION['RollNo']) {
                                 $email=$row['EmailId'];
                                 $name=$row['Name'];
                                 $rollno=$row['RollNo'];
+
                             ?>
-                                    <tr>
+                                 
+                                  <tr>
                                       <td><?php echo $name ?></td>
                                       <td><?php echo $rollno ?></td>
                                       <td><?php echo $email ?></td>                                      
