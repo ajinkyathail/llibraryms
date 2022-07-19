@@ -102,8 +102,11 @@ if ($_SESSION['RollNo']) {
                             <div class="table-responsive m-t-20">
 
                             <!-- CONTENT HERE -->
-                            
-                        
+                         
+                        <a href="addcategory.php" class="btn btn-info">Add Category</a>
+                       
+                        <br>
+                        <br>
                         <?php
                                     if(isset($_POST['submit']))
                                         {$s=$_POST['CategoryName'];
@@ -150,8 +153,8 @@ if ($_SESSION['RollNo']) {
                                      
                                         <td><center>
                                             <!-- <a href="bookdetails.php?id=<?php //echo $bookid; ?>" class="btn btn-primary">Details</a> -->
-                                            <!-- <a href="editcategory.php?id=<?php// echo $id; ?>" class="btn btn-success">Edit</a>
-                                            <a href="deletebook.php?id=<?php //echo $bookid; ?>" class="btn btn-danger">Delete</a> -->
+                                             <a href="editcategory.php?id=<?php echo $id; ?>" class="btn btn-success">Edit</a>
+                                            <a href="deletecategory.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a> 
 
                                           
 

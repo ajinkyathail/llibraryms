@@ -77,10 +77,10 @@ if ($_SESSION['RollNo']) {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                               <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Update Book</li>
+                              <li class="breadcrumb-item active" aria-current="page">Edit Category Name</li>
                             </ol>
                           </nav>
-                        <h1 class="mb-0 fw-bold">Update Book</h1> 
+                        <h1 class="mb-0 fw-bold">Edit Category Name</h1> 
                     </div>
                     
                 </div>
@@ -112,31 +112,36 @@ if ($_SESSION['RollNo']) {
                                     $sql = "select * from LMS.tblcategory where id='$id'";
                                     $result=$conn->query($sql);
                                     $row=$result->fetch_assoc();
-                                    $categoryname=$row['CategoryName'];
-                    
+                                    $id=$row['id'];
+                                    $CategoryName=$row['CategoryName'];
+                                
                                 ?>
 
                                     <br >
                                     <form class="form-horizontal row-fluid" action="editcategory.php?id=<?php echo $id ?>" method="post">
-                                        <div class="form-group">
-                                            <b>
-                                            <label class="control-label" for="Title">Catgegory :</label></b>
-                                            <div class="col-md-12">
-                                                <input type="text" id="CategoryName" name="categoryname" value= "<?php echo $categoryname?>" class="form-control form-control-line" required>
-                                            </div>
-                                        </div>
+                <div class="form-groupp">
+                    <label class="col-md-12" for="id"><b>Category ID : <?php echo $id?> </b></label>
+                    <div class="col-md-12">
+                        <input type="" id="id" name="id" placeholder="<?php echo $id?>" value="<?php echo $id?>"  class="form-control form-control-line" required>
+                    </div>
+                </div>
+                
+                <div class="form-groupp">
+                    <label class="col-md-12" for="CategoryName"><b>Category Name</b></label>
+                    <div class="col-md-12">
+                        <input type="text" id="CategoryName" name="CategoryName" value="<?php echo $CategoryName?>" placeholder="<?php echo $CategoryName?>"  class="form-control form-control-line" required>
+                    </div>
+                </div>
 
-                                        
-                                       
 
-                                        
-                                            <br>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <button type="submit" name="submit"class="btn btn-success text-blue">Update Details</button>
-                                            </div>
-                                        </div>
+                <br> 
 
+                
+            <div class="form-group">
+                <div class="col-sm-12">
+                        <button type="submit" name="submit" class="btn btn-success text-white">Edit Category</button>
+                    </div>
+                </div>
                                     </form> 
                                     </div>   
                                     </div>          
@@ -208,17 +213,18 @@ if ($_SESSION['RollNo']) {
     <?php
     if(isset($_POST['submit']))
     {
-        $id = $_GET['Id'];
-        $categoryname=$_POST['CategoryName'];
-       
+        $id = $_GET['id'];
+        $CategoryName=$_POST['CategoryName'];
+        $id =$_POST['id'];
 
-    $sql1="UPDATE 'LMS.tblcategory' SET 'Id'='$id','CategoryName'='$categoryname' where Id='$id'";
+    $sql1="update LMS.tblcategory set id='$id', CategoryName='$CategoryName' where id='$id'";
+
 
 
 
     if($conn->query($sql1) === TRUE){
     echo "<script type='text/javascript'>alert('Success')</script>";
-    header( "Refresh:0.01; url=editcategory.php", true, 303);
+    header( "Refresh:0.01; url=editbook.php", true, 303);
     }
     else
     {//echo $conn->error;

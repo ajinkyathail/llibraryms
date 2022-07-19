@@ -106,8 +106,7 @@ if ($_SESSION['RollNo']) {
 
                             <!-- CONTENT HERE -->
                             
-                       
-
+                               
                                 <!-- CONTENT END HERE -->
                             </div> 
                                 
