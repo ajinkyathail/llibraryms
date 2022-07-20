@@ -17,6 +17,7 @@
 4. Select Choose file.
 5. Find and select the lms.sql file you want to import and then select Open.
 6. At the bottom of the page, select Go.
+7. No need any changes in config. file
 7. run on browser (http://www.localhost/llibraryms)
 
 
@@ -27,7 +28,7 @@
 For Admin
 
 ```bash
-  username(RollNo) : Admin
+  username(RollNo) : ADMIN
   password : admin
 ```
 For Student
