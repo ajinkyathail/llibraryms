@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2022 at 03:19 PM
+-- Generation Time: Jul 21, 2022 at 03:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -299,30 +299,30 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`RollNo`, `Name`, `Type`, `Category`, `EmailId`, `MobNo`, `Password`) VALUES
 ('ADMIN', 'admin', 'Admin', NULL, 'admin@gmail.com', 123456789, 'admin'),
-('b160001cs', 'John', 'Student', 'School', 'john@gmail.com', 9876543210, 'b160001cs'),
-('b160002cs', 'Adam', 'Student', 'ST', 'adam@yahoo.com', 7845965212, 'b160002cs'),
+('b160001cs', 'Johns', 'Student', 'School', 'john@gmail.com', 9876543210, 'b160001cs'),
+('b160002cs', 'Adam', 'Student', 'PG', 'alice@gmail.com', 7845965212, 'b160002cs'),
 ('b160003ch', 'Alice', 'Student', 'Diploma', 'alice@hotmail.com', 4512451245, 'b160003ch'),
 ('b160004me', 'Abbot', 'Student', 'School', 'abbot@gmail.com', 6352416352, 'b160004me'),
-('b160005ce', 'bale', 'Student', 'SC', 'bale@gmail.com', 96685747485, 'b160005ce'),
+('b160005ce', 'bale', 'Student', 'UG', 'bale@gmail.com', 96685747485, 'b160005ce'),
 ('b160006cs', 'Bob', 'Student', 'School', 'bob@gmail.com', 4141415263, 'b160006cs'),
 ('b160007cs', 'Goku', 'Student', 'School', 'goku@yahoo.com', 4545451212, 'b160007cs'),
 ('b160008cs', 'Ben', 'Student', 'School', 'ben10@hotmail.com', 6352416345, 'b160008cs'),
 ('b160009cs', 'Ash', 'Student', 'School', 'ash@yahoo.com', 7845124578, 'b160009cs'),
 ('b160010cs', 'Harry', 'Student', 'School', 'harry@hotmail.com', 4578457845, 'b160010cs'),
 ('b160011ch', 'Gwen', 'Student', 'School', 'gwen@yahoo.com', 9685747474, 'b160011ch'),
-('b160012me', 'Kevin', 'Student', 'ST', 'kevin11@hotmail.com', 1242425163, 'b160012me'),
+('b160012me', 'Kevin', 'Student', 'PG', 'kevin11@hotmail.com', 1242425163, 'b160012me'),
 ('b160013ee', 'Max', 'Student', 'Diploma', 'max@gmail.com', 9685748574, 'b160013ee'),
 ('B160111Cs', 'Bharat', 'Student', 'School', 'bharat@gmail.com', 123456, 'abcd'),
 ('B160158CS', 'MANU', 'Student', 'School', 'manu@gmail.com', 8365917597, 'manu'),
 ('b160257me', 'Eve', 'Student', 'School', 'eve@gmail.com', 5451525356, 'b160257me'),
-('b160321ec', 'Joey', 'Student', 'SC', 'joey@yahoo.com', 9898982020, 'b160321ec'),
-('b160412cs', 'Barney', 'Student', 'ST', 'leSchooldary@gmail.com', 9695989192, 'b160412cs'),
+('b160321ec', 'Joey', 'Student', 'UG', 'joey@yahoo.com', 9898982020, 'b160321ec'),
+('b160412cs', 'Barney', 'Student', 'PG', 'leSchooldary@gmail.com', 9695989192, 'b160412cs'),
 ('b160423cs', 'Rachel', 'Student', 'School', 'rachel@gmail.com', 7475787671, 'b160423cs'),
 ('B160511CS', 'MALHAR', 'Student', 'Diploma', 'malhar@gmail.com', 9756153859, 'abcd'),
 ('B160632CS', 'KENIL', 'Student', 'School', 'kenilshah081198@gmail.com', 9892506094, '1234'),
 ('b160777cs', 'Sheldon', 'Student', 'School', 'smartestpersoninroom@gmail.com', 9696969696, 'b160777cs'),
-('b160854cs', 'Ram Prabhu', 'Student', 'SC', 'ram@nitc.ac.in', 968599, '1234'),
-('b160951cs', 'Misty', 'Student', 'SC', 'watermaster@hotmail.com', 4145424847, 'b160951cs'),
+('b160854cs', 'Ram Prabhu', 'Student', 'UG', 'ram@nitc.ac.in', 968599, '1234'),
+('b160951cs', 'Misty', 'Student', 'UG', 'watermaster@hotmail.com', 4145424847, 'b160951cs'),
 ('b160999cs', 'Chandler', 'Student', 'Diploma', 'sarcasticlord@hotmail.com', 9494959694, 'b160999cs');
 
 --
